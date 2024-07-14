@@ -1,7 +1,18 @@
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
+
 function App() {
   return (
     <>
-      <h1 className=" text-emerald-600 text-7xl">test</h1>
+      <Router>
+        <Navbar/>
+        <Routes>
+          <Route path="/LifeHub" element={<Navigate to='/' replace/>}/>
+
+          <Route path="/" element={<Home/>} />
+        </Routes>
+      </Router>
     </>
   )
 }
