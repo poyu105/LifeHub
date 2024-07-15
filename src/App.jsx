@@ -5,6 +5,7 @@ import FoodRec from "./pages/FoodRec"
 import TrafficGuide from "./pages/TrafficGuide"
 import ShoppingGuide from "./pages/ShoppingGuide"
 import Entertainment from "./pages/Entertainment"
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/ShoppingGuide" element={<ShoppingGuide/>}/>
           <Route path="/Entertainment" element={<Entertainment/>}/>
         </Routes>
+        <Footer/>
       </Router>
     </>
   )
