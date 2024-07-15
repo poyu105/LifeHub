@@ -3,7 +3,7 @@ export default function Navbar(){
     return(
         <>
             <nav>
-                <div className="flex justify-between align-middle px-5 py-3 bg-orange-300 drop-shadow-md">
+                <div className="flex justify-between align-middle px-5 py-3 bg-custom-navbar drop-shadow-md text-slate-900">
                     {/* HomePage */}
                     <Link to='/' className=" text-4xl">LifeHub</Link>
                     {/* Mobile Menu Button */}
@@ -22,20 +22,20 @@ export default function Navbar(){
                         </svg>
                     </button>
                     {/*Main Navigates */}
-                    <ul className="sm:flex justify-between md:min-w-96 min-w-80 hidden">
-                        <li className="my-auto">
+                    <ul className="sm:flex justify-between hidden">
+                        <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
                             <Link>美食推薦</Link>
                         </li>
-                        <li className="my-auto">
+                        <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
                             <Link>交通指南</Link>
                         </li>
-                        <li className="my-auto">
+                        <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
                             <Link>購物指南</Link>
                         </li>
-                        <li className="my-auto">
+                        <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
                             <Link>休閒娛樂</Link>
                         </li>
-                        <li className="my-auto">
+                        <li className="my-auto mx-3">
                             <button>
                                 <i className="bi bi-person-circle"></i>
                             </button>
