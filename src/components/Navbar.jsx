@@ -24,16 +24,16 @@ export default function Navbar(){
                     {/*Main Navigates */}
                     <ul className="sm:flex justify-between hidden">
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link>美食推薦</Link>
+                            <Link to="/FoodRec">美食推薦</Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link>交通指南</Link>
+                            <Link to="/TrafficGuide">交通指南</Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link>購物指南</Link>
+                            <Link to="/ShoppingGuide">購物指南</Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link>休閒娛樂</Link>
+                            <Link to="/Entertainment">休閒娛樂</Link>
                         </li>
                         <li className="my-auto mx-3">
                             <button>
