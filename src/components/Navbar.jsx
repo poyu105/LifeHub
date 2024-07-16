@@ -29,19 +29,38 @@ export default function Navbar(){
                     {/*Main Navigates */}
                     <ul className={"text-center flex sm:flex-row flex-col justify-between sm:mx-0 sm:max-h-screen sm:transition-none "+(showMenu ? "max-h-screen transition-max-height duration-500 ease-in-out":"max-h-0 overflow-hidden")}>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/FoodRec" className="block w-full">美食推薦</Link>
+                            <Link to="/" className="block w-full">
+                                {/* Bootstrap icon */}
+                                <i class="bi bi-house"></i>首頁
+                            </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/TrafficGuide" className="block w-full">交通指南</Link>
+                            <Link to="/FoodRec" className="block w-full">
+                                {/* Bootstrap icon */}
+                                <i class="bi bi-cake"></i>美食推薦
+                            </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/ShoppingGuide" className="block w-full">購物指南</Link>
+                            <Link to="/TrafficGuide" className="block w-full">
+                                {/* Bootstrap icon */}
+                                <i class="bi bi-bus-front"></i>交通指南
+                            </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/Entertainment" className="block w-full">休閒娛樂</Link>
+                            <Link to="/ShoppingGuide" className="block w-full">
+                                {/* Bootstrap icon */}
+                                <i class="bi bi-cart"></i>購物指南
+                            </Link>
+                        </li>
+                        <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
+                            <Link to="/Entertainment" className="block w-full">
+                                {/* Bootstrap icon */}
+                                <i class="bi bi-balloon"></i>休閒娛樂
+                            </Link>
                         </li>
                         <li className="my-auto mx-3">
                             <button className="block w-full">
+                                {/* Bootstrap icon */}
                                 <i className="bi bi-person-circle"></i>
                                 <span className="sm:hidden inline-block">個人檔案</span>
                             </button>
