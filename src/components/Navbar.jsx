@@ -27,7 +27,7 @@ export default function Navbar(){
                         </button>
                     </div>
                     {/*Main Navigates */}
-                    <ul className={"sm:flex justify-between sm:mx-0 "+(showMenu ? "text-center":"hidden")}>
+                    <ul className={"text-center sm:flex justify-between sm:mx-0 sm:scale-y-100 sm:max-h-screen sm:transition-none transition-max-height duration-500 ease-in-out "+(showMenu ? "max-h-screen":"max-h-0 overflow-hidden")}>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
                             <Link to="/FoodRec">美食推薦</Link>
                         </li>
