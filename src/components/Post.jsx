@@ -4,8 +4,8 @@ export default function Post() {
         <div key={i} className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
             {/* Post Header */}
             <div className="flex sm:flex-row flex-col justify-between mx-auto border-b-2">
-                <h3 className="md:text-lg text-base font-bold">{/* Bootstrap icon */}<i class="bi bi-person-circle"></i>UserName<span> (Badge)</span></h3>
-                <span className="md:text-sm text-xs sm:self-center">{/* Bootstrap icon */}<i class="bi bi-send"></i>台中市,沙鹿區</span>
+                <h3 className="md:text-lg text-base font-bold">{/* Bootstrap icon */}<i className="bi bi-person-circle"></i>UserName<span> (Badge)</span></h3>
+                <span className="md:text-sm text-xs sm:self-center">{/* Bootstrap icon */}<i className="bi bi-send"></i>台中市,沙鹿區</span>
             </div>
             {/* Post Img */}
             <div className="bg-slate-500 my-3 rounded">
