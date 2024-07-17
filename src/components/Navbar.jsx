@@ -27,35 +27,35 @@ export default function Navbar(){
                         </button>
                     </div>
                     {/*Main Navigates */}
-                    <ul className={"text-center flex sm:flex-row flex-col justify-between sm:mx-0 sm:max-h-screen sm:transition-none "+(showMenu ? "max-h-screen transition-max-height duration-500 ease-in-out":"max-h-0 overflow-hidden")}>
+                    <ul className={"text-center flex sm:flex-row flex-col justify-between sm:mx-0 sm:max-h-screen sm:transition-none transition-max-height duration-500 ease-in-out overflow-hidden "+(showMenu ? "max-h-screen":"max-h-0")}>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/" className="block w-full">
+                            <Link to="/" className="block w-full" onClick={()=>setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
-                                <i class="bi bi-house"></i>首頁
+                                <i className="bi bi-house"></i>首頁
                             </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/FoodRec" className="block w-full">
+                            <Link to="/FoodRec" className="block w-full" onClick={()=>setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
-                                <i class="bi bi-cake"></i>美食推薦
+                                <i className="bi bi-cake"></i>美食推薦
                             </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/TrafficGuide" className="block w-full">
+                            <Link to="/TrafficGuide" className="block w-full" onClick={()=>setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
-                                <i class="bi bi-bus-front"></i>交通指南
+                                <i className="bi bi-bus-front"></i>交通指南
                             </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/ShoppingGuide" className="block w-full">
+                            <Link to="/ShoppingGuide" className="block w-full" onClick={()=>setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
-                                <i class="bi bi-cart"></i>購物指南
+                                <i className="bi bi-cart"></i>購物指南
                             </Link>
                         </li>
                         <li className="my-auto mx-3 hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/Entertainment" className="block w-full">
+                            <Link to="/Entertainment" className="block w-full" onClick={()=>setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
-                                <i class="bi bi-balloon"></i>休閒娛樂
+                                <i className="bi bi-balloon"></i>休閒娛樂
                             </Link>
                         </li>
                         <li className="my-auto mx-3">
