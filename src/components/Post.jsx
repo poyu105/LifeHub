@@ -15,6 +15,10 @@ export default function Post() {
             <div className="md:text-lg my-2">
                 <p>This is post content number {i + 1}.</p>
             </div>
+            {/* Post Reply */}
+            <div className="text-sm">
+                <p>This is post reply number{i+1}</p>
+            </div>
             {/* Post Footer */}
             <div className="flex justify-between sm:flex-row flex-col md:text-base sm:text-sm text-xs my-2">
                 <span>-2024/7/17</span>
