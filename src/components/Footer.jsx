@@ -21,7 +21,7 @@ export default function Footer() {
     };
 
     return (
-    <footer className="bg-black text-zinc-50 text-center mt-3">
+    <footer className="absolute bottom-0 bg-black text-zinc-50 text-center mt-3 px-2">
         <div className="py-2">
             <small className="lastModifiedDate text-center">Update: {lastModifiedDate}</small><br/>
             <small>&copy;2024 <a className="text-center hover:text-zinc-300" href="https://poyu105.github.io/myweb" target="_blank">Poyu webDev.</a></small>
