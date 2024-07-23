@@ -10,7 +10,7 @@ export default {
         'custom-navbar':'#F7E7CE'
       },
       screens:{
-        'customer-ssm':'280px'
+        'customer-ssm':'300px'
       }
     },
   },
