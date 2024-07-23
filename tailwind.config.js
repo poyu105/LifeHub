@@ -8,6 +8,9 @@ export default {
     extend: {
       colors:{
         'custom-navbar':'#F7E7CE'
+      },
+      screens:{
+        'customer-ssm':'280px'
       }
     },
   },
