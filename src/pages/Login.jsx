@@ -2,9 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer"
 import { useState } from "react";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login(){
-
+    const {login} = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] =useState('');
     const navigate =useNavigate();
@@ -17,6 +18,7 @@ export default function Login(){
                 password
             });
             console.log('F:登入成功:', response.data);
+            login(response.data.user);
             navigate('/Profile');
         } catch(error){
             console.log('F:登入失敗', error);
