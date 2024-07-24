@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
-import Navbar from "./components/Navbar"
-import Home from "./pages/Home"
-import FoodRec from "./pages/FoodRec"
-import TrafficGuide from "./pages/TrafficGuide"
-import ShoppingGuide from "./pages/ShoppingGuide"
-import Entertainment from "./pages/Entertainment"
-import Profile from "./pages/Profile"
-import Register from "./pages/Register"
-import Login from "./pages/Login"
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import FoodRec from "./pages/FoodRec";
+import TrafficGuide from "./pages/TrafficGuide";
+import ShoppingGuide from "./pages/ShoppingGuide";
+import Entertainment from "./pages/Entertainment";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Router>
         <Navbar/>
         <Routes>
@@ -27,8 +28,8 @@ function App() {
           <Route path="/Login" element={<Login/>}/>
         </Routes>
       </Router>
-    </>
-  )
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
