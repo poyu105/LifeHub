@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import Footer from "../components/Footer";
 
 export default function Register(){
 
@@ -32,8 +33,8 @@ export default function Register(){
 
     return(
         <>
-            <h2 className="text-2xl font-bold text-center">註冊</h2>
-            <form>
+            <h2 className="text-2xl font-bold text-center mt-3">註冊</h2>
+            <form className="md:w-4/12 sm:w-5/12 customer-ssm:w-7/12 customer-ssm:mx-auto mx-2">
             <div className="mb-2">
                     <label>
                         <strong>使用者名稱:</strong>
@@ -73,9 +74,10 @@ export default function Register(){
                 <button type="submit" onClick={handleSubmit} className="bg-blue-500 text-white w-full rounded">註冊</button>
                 <div className="mt-1 text-sm text-center">
                     <span>已經有帳號?&emsp;</span>
-                    <Link to='/Login'>登入</Link>
+                    <Link to='/Login' className=" text-blue-700 border-b-2 border-blue-700 hover:text-blue-400 hover:border-blue-400">登入</Link>
                 </div>
             </form>
+            <Footer/>
         </>
     )
 }
