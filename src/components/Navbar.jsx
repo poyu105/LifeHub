@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import ProfileMenu from "./ProfileMenu";
+
 export default function Navbar(){
     // 漢堡選單boolean
     const [showMenu, setShowMenu] = useState(false);
-    // 個人檔案Menu
-    const [showProfileMenu, setShowProfileMenu] = useState(false);
 
     return(
         <>
@@ -62,17 +60,15 @@ export default function Navbar(){
                                 <i className="bi bi-balloon"></i>休閒娛樂
                             </Link>
                         </li>
-                        <li className="my-auto mx-2">
-                            <button className="block w-full" onClick={()=>{setShowProfileMenu(!showProfileMenu)}}>
+                        <li className="my-auto mx-2 hover:border-b-2 hover:border-b-stone-600">
+                            <Link to="/Profile" className="block w-full" onClick={()=>setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
-                                <i className="bi bi-person-circle"></i>
-                                <span className="sm:hidden inline-block">個人檔案</span>
-                            </button>
+                                <i className="bi bi-person-circle"></i>個人檔案
+                            </Link>
                         </li>
                     </ul>
                 </div>
             </nav>
-            <ProfileMenu showProfileMenu={showProfileMenu} setShowProfileMenu={setShowProfileMenu}/>
         </>
     )
 }
