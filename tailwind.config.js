@@ -11,6 +11,9 @@ export default {
       },
       screens:{
         'customer-ssm':'300px'
+      },
+      borderWidth:{
+        '1':'1px'
       }
     },
   },
