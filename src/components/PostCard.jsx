@@ -1,4 +1,4 @@
-export default function Post() {
+export default function PostCard() {
     // 創建一個包含多個 Post 的數組
     const posts = Array.from({ length: 5 }, (_, i) => (
         <div key={i} className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
