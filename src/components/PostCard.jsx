@@ -1,6 +1,6 @@
 export default function PostCard() {
     // 創建一個包含多個 Post 的數組
-    const posts = Array.from({ length: 5 }, (_, i) => (
+    const posts = Array.from({ length: 20 }, (_, i) => (
         <div key={i} className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
             {/* Post Header */}
             <div className="flex sm:flex-row flex-col justify-between mx-auto border-b-2">

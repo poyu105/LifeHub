@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import PageHeader from "../components/PageHeader";
 
 export default function Post(){
     //post日期狀態
@@ -14,7 +13,6 @@ export default function Post(){
 
     return(
         <>
-            <PageHeader title={"新增貼文"}/>
             <form className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
                 {/* Post Header */}
                 <div className="flex sm:flex-row flex-col justify-between mx-auto border-b-2">

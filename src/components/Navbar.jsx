@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext";
+import PageHeader from "./PageHeader";
 
-export default function Navbar(){
+export default function Navbar({title}){
     // 漢堡選單boolean
     const [showMenu, setShowMenu] = useState(false);
 
     const {user} = useAuth();
 
 
-    //日期狀態
+    // 日期狀態
     const [date, setDate] = useState('');
     useEffect(()=>{
         // 獲取當前日期
@@ -18,10 +19,34 @@ export default function Navbar(){
         const formattedDate = `${currentDate.getFullYear()}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getDate()).padStart(2, '0')}`;
         setDate(formattedDate);
     },[]);
+
+    // 導覽列隱藏/顯示狀態
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollerY, setLastScrollerY] = useState(0);
+    useEffect(()=>{
+        const handleScroll = ()=>{
+            if(window.scrollY>lastScrollerY){
+                // 向下滑動隱藏Navbar
+                setShowNavbar(false);
+            }
+            else{
+                // 向上滑動顯示Navbar
+                setShowNavbar(true);
+            }
+            setLastScrollerY(window.scrollY);
+        };
+        window.addEventListener('scroll',handleScroll);
+
+        //clear eventListener
+        return ()=>{
+            window.removeEventListener('scroll', handleScroll);
+        };
+    },[lastScrollerY]);
+
     return(
         <>
-            <nav>
-                <div className="flex justify-between align-middle sm:flex-row flex-col px-5 py-3 bg-custom-navbar drop-shadow-md text-slate-900">
+            <nav className={`sticky top-0 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
+                <div className="flex justify-between align-middle sm:flex-row flex-col px-5 py-3 bg-custom-navbar drop-shadow text-slate-900">
                     <div className="flex justify-between">
                         {/* HomePage */}
                         <Link to='/' className=" text-4xl">LifeHub</Link>
@@ -90,11 +115,12 @@ export default function Navbar(){
                         }
                     </ul>
                 </div>
+                <div className="flex justify-center items-center sm:flex-row flex-col sm:text-base customer-ssm:text-sm text-xs font-bold bg-amber-200 drop-shadow">
+                    <span>網頁處於開發階段 最後更新日期:{date} &emsp;</span>
+                    <small>&copy;2024 <a className="text-center border-b-2 border-black hover:text-gray-600 hover:border-gray-600" href="https://poyu105.github.io/myweb" target="_blank">Poyu webDev.</a></small>
+                </div>
+                {title == null ? undefined:<PageHeader title={title}/>}
             </nav>
-            <div className="flex justify-center items-center sm:flex-row flex-col sm:text-base customer-ssm:text-sm text-xs font-bold bg-amber-200">
-                <span>網頁處於開發階段 最後更新日期:{date} &emsp;</span>
-                <small>&copy;2024 <a className="text-center border-b-2 border-black hover:text-gray-600 hover:border-gray-600" href="https://poyu105.github.io/myweb" target="_blank">Poyu webDev.</a></small>
-            </div>
         </>
     )
 }
