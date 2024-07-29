@@ -73,39 +73,39 @@ export default function Navbar({ title }) {
                             </Link>
                         </li>
                         <li className="my-auto hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/FoodRec" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
+                            <Link to="/foodRec" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
                                 <i className="bi bi-cake"></i>美食推薦
                             </Link>
                         </li>
                         <li className="my-auto hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/TrafficGuide" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
+                            <Link to="/trafficGuide" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
                                 <i className="bi bi-bus-front"></i>交通指南
                             </Link>
                         </li>
                         <li className="my-auto hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/ShoppingGuide" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
+                            <Link to="/shoppingGuide" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
                                 <i className="bi bi-cart"></i>購物指南
                             </Link>
                         </li>
                         <li className="my-auto hover:border-b-2 hover:border-b-stone-600">
-                            <Link to="/Entertainment" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
+                            <Link to="/entertainment" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
                                 {/* Bootstrap icon */}
                                 <i className="bi bi-balloon"></i>休閒娛樂
                             </Link>
                         </li>
                         {user ?
                             <li className="my-auto hover:border-b-2 hover:border-b-stone-600">
-                                <Link to="/Profile" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
+                                <Link to="/profile" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
                                     {/* Bootstrap icon */}
                                     <i className="bi bi-person-circle"></i>個人檔案
                                 </Link>
                             </li>
                             :
                             <li className="my-auto hover:border-b-2 hover:border-b-stone-600">
-                                <Link to="/Login" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
+                                <Link to="/login" className="block w-full" onClick={() => setShowMenu(!showMenu)}>
                                     {/* Bootstrap icon */}
                                     <i className="bi bi-person-circle"></i>登入
                                 </Link>

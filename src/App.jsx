@@ -44,14 +44,14 @@ function App() {
         <Routes>
           <Route path="/LifeHub" element={<Navigate to='/' replace />} />
           <Route path="/" element={<Home />} />
-          <Route path="/FoodRec" element={<FoodRec />} />
-          <Route path="/TrafficGuide" element={<TrafficGuide />} />
-          <Route path="/ShoppingGuide" element={<ShoppingGuide />} />
-          <Route path="/Entertainment" element={<Entertainment />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Post" element={<Post />} />
+          <Route path="/foodRec" element={<FoodRec />} />
+          <Route path="/trafficGuide" element={<TrafficGuide />} />
+          <Route path="/shoppingGuide" element={<ShoppingGuide />} />
+          <Route path="/entertainment" element={<Entertainment />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/post" element={<Post />} />
         </Routes>
       </Router>
     </AuthProvider>
