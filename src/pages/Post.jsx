@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 export default function Post(){
-    //post日期狀態
+    // post日期狀態
     const [postDate, setPostDate] = useState('');
     useEffect(()=>{
         // 獲取當前日期
@@ -11,17 +12,33 @@ export default function Post(){
         setPostDate(formattedDate);
     },[]);
 
+    const {user} = useAuth();
+    const [city, setCity] = useState('');
+    const [district, setDistrict] = useState('');
+    const [mediaFiles, setMediaFiles] = useState([]);
+    const [content, setContent] = useState('');
+    const [tags, setTags] = useState([]);
+
+    const handleTagsChange = (e)=>{
+        const value = e.target.value;
+        if (e.target.checked) {
+            setTags([...tags, value]);
+        } else {
+            setTags(tags.filter(tag => tag !== value));
+        }
+    }
+
     return(
         <>
             <form className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
                 {/* Post Header */}
                 <div className="flex sm:flex-row flex-col justify-between mx-auto border-b-2">
                     {/* UserName 由系統自動帶入 */}
-                    <h3 className="md:text-lg text-base font-bold">{/* Bootstrap icon */}<i className="bi bi-person-circle"></i>UserName<span> (Badge)</span></h3>
+                    <h3 className="md:text-lg text-base font-bold">{/* Bootstrap icon */}<i className="bi bi-person-circle"></i>{user.username}<span> (Badge)</span></h3>
                     <div className="md:text-sm text-xs sm:self-center border-1 border-red-600 rounded p-1">
                         {/* Bootstrap icon */}<i className="bi bi-send me-1"></i>
-                        <input type="text" placeholder="請輸入縣市" className="me-1 sm:w-20 w-16 border border-black rounded" required/>,
-                        <input type="text" placeholder="請輸入區域" className="ms-1 sm:w-20 w-16 border border-black rounded" required/>
+                        <input type="text" value={city} onChange={(e)=>{setCity(e.target.value)}} placeholder="請輸入縣市" className="me-1 sm:w-20 w-16 border border-black rounded" required/>,
+                        <input type="text" value={district} onChange={(e)=>{setDistrict(e.target.value)}} placeholder="請輸入區域" className="ms-1 sm:w-20 w-16 border border-black rounded" required/>
                     </div>
                 </div>
                 {/* Post Img */}
@@ -32,7 +49,7 @@ export default function Post(){
                 {/* Post Content */}
                 <div className="md:text-lg my-2 border-1 border-red-600 rounded p-1">
                     <label className="font-bold text-sm">請輸入貼文內容:</label>
-                    <textarea placeholder="貼文內容" className="w-full border rounded-lg" required></textarea>
+                    <textarea value={content} onChange={(e)=>{setContent(e.target.value)}} placeholder="貼文內容" className="w-full border rounded-lg" required></textarea>
                 </div>
                 {/* Post Reply */}
                 <div className="text-sm">
@@ -48,19 +65,19 @@ export default function Post(){
                     <div className="flex flex-row items-center flex-wrap gap-2 border-1 border-red-600 rounded p-1">
                         <label className="font-bold text-sm">請選取標籤(至少一項):</label>
                         <label className="block">
-                            <input type="checkbox" value="#美食推薦" />
+                            <input type="checkbox" value="#美食推薦" onChange={handleTagsChange} />
                             #美食推薦
                         </label>
                         <label className="block">
-                            <input type="checkbox" value="#交通指南" />
+                            <input type="checkbox" value="#交通指南" onChange={handleTagsChange} />
                             #交通指南
                         </label>
                         <label className="block">
-                            <input type="checkbox" value="#購物指南" />
+                            <input type="checkbox" value="#購物指南" onChange={handleTagsChange} />
                             #購物指南
                         </label>
                         <label className="block">
-                            <input type="checkbox" value="#休閒娛樂" />
+                            <input type="checkbox" value="#休閒娛樂" onChange={handleTagsChange} />
                             #休閒娛樂
                         </label>
                     </div>
