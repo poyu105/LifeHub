@@ -8,15 +8,24 @@ export default function Navbar({ title }) {
     const [showMenu, setShowMenu] = useState(false);
     const { user } = useAuth();
 
-    // 日期狀態
-    const [date, setDate] = useState('');
+    const [lastModifiedDate, setLastModifiedDate] = useState('');
+
     useEffect(() => {
-        // 獲取當前日期
-        const currentDate = new Date();
-        // 格式化日期為 YYYY/MM/dd
-        const formattedDate = `${currentDate.getFullYear()}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getDate()).padStart(2, '0')}`;
-        setDate(formattedDate);
+    const date = new Date(document.lastModified);
+    setLastModifiedDate(formatDate(date));
     }, []);
+
+    const formatDate = (date) => {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const day = days[date.getDay()];
+    const month = months[date.getMonth()];
+    const dayOfMonth = date.getDate();
+    const year = date.getFullYear();
+
+    return `${day}, ${month} ${dayOfMonth}, ${year}`;
+    };
 
     // 導覽列隱藏/顯示狀態
     const [showNavbar, setShowNavbar] = useState(true);
@@ -113,7 +122,7 @@ export default function Navbar({ title }) {
                     </ul>
                 </div>
                 <div className="flex justify-center items-center sm:flex-row flex-col sm:text-base customer-ssm:text-sm text-xs font-bold bg-amber-200 drop-shadow">
-                    <span>網頁處於開發階段 最後更新日期:{date} &emsp;</span>
+                    <span>網頁處於開發階段 最後更新日期:{lastModifiedDate} &emsp;</span>
                     <small>&copy;2024 <a className="text-center border-b-2 border-black hover:text-gray-600 hover:border-gray-600" href="https://poyu105.github.io/myweb" target="_blank">Poyu webDev.</a></small>
                 </div>
                 {title == null ? undefined : <PageHeader title={title} />}
