@@ -31,7 +31,6 @@ export default function Navbar({ title }) {
                 setShowNavbar(true);
             }
             setLastScrollerY(window.scrollY);
-            console.log(lastScrollerY);
         };
         window.addEventListener('scroll', handleScroll);
 
