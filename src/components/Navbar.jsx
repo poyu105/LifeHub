@@ -7,24 +7,18 @@ export default function Navbar({ title }) {
     // 漢堡選單boolean
     const [showMenu, setShowMenu] = useState(false);
     const { user } = useAuth();
-
+    // 最後更新日期
     const [lastModifiedDate, setLastModifiedDate] = useState('');
-
     useEffect(() => {
     const date = new Date(document.lastModified);
     setLastModifiedDate(formatDate(date));
     }, []);
-
     const formatDate = (date) => {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-    const day = days[date.getDay()];
     const month = months[date.getMonth()];
     const dayOfMonth = date.getDate();
     const year = date.getFullYear();
-
-    return `${day}, ${month} ${dayOfMonth}, ${year}`;
+    return `${month} ${dayOfMonth}, ${year}`;
     };
 
     // 導覽列隱藏/顯示狀態
