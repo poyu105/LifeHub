@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext } from 'react';
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [user, setUser] = useState({username: '測試用名稱', id:'測試用ID_AABCD00123_test', email: 'testAAA@gmail.com'});
+    const [user, setUser] = useState({username: 'test', id:'66a094ab716349bea7248022', email: 'test@gmail.com'});
 
     const login = (userData) => {
         setUser(userData);
