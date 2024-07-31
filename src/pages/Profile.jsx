@@ -29,7 +29,7 @@ export default function Profile() {
                 :
                 <div className="alert text-center">請先登入!</div>
             }
-            <button onClick={()=>{console.log(`目前的用戶資訊: ${JSON.stringify(user)}`);}} className="bg-yellow-400 text-black p-2 rounded">顯示目前用戶資訊</button>
+            <button onClick={()=>{console.log(`目前的用戶資訊: ${JSON.stringify(user)}`); alert(`id: ${user.id} \n使用者名稱: ${user.username} \nEmail: ${user.email}`)}} className="bg-yellow-400 text-black p-2 rounded">顯示目前用戶資訊</button>
         </>
     );
 }
