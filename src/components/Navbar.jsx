@@ -45,7 +45,7 @@ export default function Navbar({ title }) {
 
     return (
         <>
-            <nav className={`${window.scrollY>110 ? 'sticky transition-transform duration-300 ease-in-out' : ''} ${showNavbar? 'top-0 translate-y-0' : '-translate-y-full'}`}>
+            <nav className={`${window.scrollY>110 ? 'z-50 sticky transition-transform duration-300 ease-in-out' : ''} ${showNavbar? 'top-0 translate-y-0' : '-translate-y-full'}`}>
                 <div className="flex justify-between align-middle sm:flex-row flex-col px-5 py-3 bg-custom-navbar drop-shadow text-slate-900">
                     <div className="flex justify-between">
                         {/* HomePage */}
