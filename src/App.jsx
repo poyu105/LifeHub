@@ -21,12 +21,12 @@ function NavbarWrapper() {
     // Mapping path to title
     const pathToTitleMap = {
       "/": "Home",
-      "/FoodRec": "美食推薦",
-      "/TrafficGuide": "交通指南",
-      "/ShoppingGuide": "購物指南",
-      "/Entertainment": "休閒娛樂",
-      "/Profile": "個人檔案",
-      "/Post":"新增貼文"
+      "/foodRec": "美食推薦",
+      "/trafficGuide": "交通指南",
+      "/shoppingGuide": "購物指南",
+      "/entertainment": "休閒娛樂",
+      "/profile": "個人檔案",
+      "/post":"新增貼文"
     };
 
     const currentPath = location.pathname;
