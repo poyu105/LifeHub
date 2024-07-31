@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import $ from "jquery";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Post() {
     // post日期狀態
@@ -67,10 +69,46 @@ export default function Post() {
     const handleFileClick = ()=>{
         $('#fileInput').click();
     }
-    
+    // 處理提交後端
+    const navigate = useNavigate();
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        //手動檢查表單驗證
+        if (!e.target.checkValidity()) {
+            e.stopPropagation();
+            return;
+        }
+        const formData = new FormData();
+        formData.append('userId', user.id);
+        formData.append('userName', user.username);
+        formData.append('city', city);
+        formData.append('district', district);
+        formData.append('content', content);
+        formData.append('postDate', postDate);
+        tags.forEach(element => {
+            formData.append('tags',element);
+        });
+        mediaFiles.forEach(element => {
+            formData.append('mediaFiles', element);
+            console.log(`F: 照片URL: ${element}`);
+        });
+        try {
+            const response = await axios.post('http://localhost:3001/api/posts',formData);
+            if(response.status==201){
+                alert('貼文已成功新增!');
+                navigate('/');
+            }
+            else{
+                alert('貼文新增失敗!');
+            }
+        } catch (error) {
+            console.log(`F:貼文新增失敗!${error}`);
+            alert('貼文新增失敗!');
+        }
+    }
     return (
         <>
-            <form className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
+            <form onSubmit={handleSubmit} className="container w-9/12 mx-auto my-5 border-b-2 border-slate-500">
                 {/* Post Header */}
                 <div className="flex sm:flex-row flex-col justify-between mx-auto border-b-2">
                     {/* UserName 由系統自動帶入 */}
