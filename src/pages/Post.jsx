@@ -91,11 +91,12 @@ export default function Post() {
                             <button type="button" onClick={handleDeleteFile} className="border border-gray-500 rounded bg-red-500 hover:bg-red-600 text-white p-1">移除</button>
                         </div>
                     </div>
+                    <span className="text-xs bg-yellow-300 max-w-fit">(使用非移動裝置可能無法正確預覽影片內容!)</span>
                     {mediaFiles.length > 0 && (
                         <Slider {...settings}>
                             {mediaFiles.map((fileUrl, index) => (
-                                <div key={index}>
-                                    <img src={fileUrl} alt={`media-${index}`} className="w-full h-auto" />
+                                <div key={index} className="h-96">
+                                    <img src={fileUrl} alt={`media-${index}`} className="max-w-full h-full object-cover mx-auto" />
                                 </div>
                             ))}
                         </Slider>
