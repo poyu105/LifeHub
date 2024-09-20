@@ -37,7 +37,13 @@ export default function Post() {
     // 照(影)片更動
     const handleFileChange = (e) => {
         const files = Array.from(e.target.files);
-        setMediaFiles(prevFiles => [...prevFiles, ...files.map(file => URL.createObjectURL(file))]);
+        //判斷上傳的檔案為照片或影片
+        const newFiles = files.map(file => ({
+            url: URL.createObjectURL(file),
+            type: file.type.startsWith('video') ? 'video' : 'image',
+            file//儲存原本的檔案
+        }));
+        setMediaFiles(prevFiles => [...prevFiles, ...newFiles]);
     }
     // 刪除照(影)片
     const handleDeleteFile = () => {
@@ -69,6 +75,7 @@ export default function Post() {
     const handleFileClick = ()=>{
         $('#fileInput').click();
     }
+
     // 處理提交後端
     const navigate = useNavigate();
     const handleSubmit = async (e)=>{
@@ -89,8 +96,8 @@ export default function Post() {
             formData.append('tags',element);
         });
         mediaFiles.forEach(element => {
-            formData.append('mediaFiles', element);
-            console.log(`F: 照片URL: ${element}`);
+            formData.append('mediaFiles', element.file);
+            console.log(`F: 照片URL: ${element.file}`);
         });
         try {
             const response = await axios.post('http://localhost:3001/api/posts',formData);
@@ -129,12 +136,28 @@ export default function Post() {
                             <button type="button" onClick={handleDeleteFile} className="border border-gray-500 rounded bg-red-500 hover:bg-red-600 text-white p-1">移除</button>
                         </div>
                     </div>
-                    <span className="text-xs bg-yellow-300 max-w-fit">(使用非移動裝置可能無法正確預覽影片內容!)</span>
                     {mediaFiles.length > 0 && (
                         <Slider {...settings}>
-                            {mediaFiles.map((fileUrl, index) => (
+                            {mediaFiles.map((file, index) => (
                                 <div key={index} className="h-96">
-                                    <img src={fileUrl} alt={`media-${index}`} className="max-w-full h-full object-cover mx-auto" />
+                                    {file.type === 'image' ? (
+                                        <img src={file.url} alt={`media-${index}`} className="max-w-full h-full object-cover mx-auto" />
+                                    ):(
+                                        <video
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            className="max-w-full h-full object-cover mx-auto"
+                                            onClick={(e) => {
+                                                // 切換靜音狀態
+                                                e.target.muted = !e.target.muted;
+                                            }}
+                                        >
+                                            <source src={file.url} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    )}
                                 </div>
                             ))}
                         </Slider>
