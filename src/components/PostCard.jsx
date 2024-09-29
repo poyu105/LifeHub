@@ -10,7 +10,6 @@ export default function PostCard() {
         const fetchPosts = async () => {
             try {
                 const response = await axios.get('http://localhost:3001/api/posts');
-                console.log(`response data: ${response.data}`);
                 setPosts(response.data);
             } catch (error) {
                 console.error('Error fetching posts:', error);
