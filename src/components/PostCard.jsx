@@ -2,22 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PostSlider from './PostSlider';
 
-export default function PostCard() {
-    const [posts, setPosts] = useState([]);
+export default function PostCard({posts}) {
     const [currentSlide, setCurrentSlide] = useState(0);
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/api/posts');
-                setPosts(response.data);
-            } catch (error) {
-                console.error('Error fetching posts:', error);
-            }
-        };
-
-        fetchPosts();
-    }, []);
 
     return (
         <>
