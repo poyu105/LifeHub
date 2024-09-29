@@ -80,7 +80,6 @@ export default function Post() {
         });
         mediaFiles.forEach(element => {
             formData.append('mediaFiles', element.file);
-            console.log(`F: 照片URL: ${element.file}`);
         });
         try {
             const response = await axios.post('http://localhost:3001/api/posts',formData);
@@ -93,7 +92,7 @@ export default function Post() {
             }
         } catch (error) {
             console.log(`F:貼文新增失敗!${error}`);
-            alert('貼文新增失敗!');
+            alert(`貼文新增失敗!\n${error}`);
         }
     }
     return (
