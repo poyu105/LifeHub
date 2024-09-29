@@ -49,7 +49,7 @@ export default function Navbar({ title }) {
                 <div className="flex justify-between align-middle sm:flex-row flex-col px-5 py-3 bg-custom-navbar drop-shadow text-slate-900">
                     <div className="flex justify-between">
                         {/* HomePage */}
-                        <Link to='/' className=" text-4xl">LifeHub</Link>
+                        <Link to='/' className=" text-4xl">生活Pie</Link>
                         {/* Mobile Menu Button */}
                         <button className="sm:hidden" onClick={() => setShowMenu(!showMenu)}>
                             <svg
