@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PostSlider from './PostSlider';
 
 export default function PostCard() {
     const [posts, setPosts] = useState([]);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const response = await axios.get('http://localhost:3001/api/posts');
+                console.log(`response data: ${response.data}`);
                 setPosts(response.data);
             } catch (error) {
                 console.error('Error fetching posts:', error);
@@ -38,7 +41,7 @@ export default function PostCard() {
                     {/* Post Img */}
                     <div className="bg-slate-500 my-3 rounded">
                         {post.mediaFiles.length > 0 && (
-                            <img src={`http://localhost:3001/${post.mediaFiles[0]}`} alt="IMG" className="w-full h-auto" />
+                            <PostSlider mediaFiles={post.mediaFiles} setCurrentSlide={setCurrentSlide}/>
                         )}
                     </div>
                     {/* Post Content */}

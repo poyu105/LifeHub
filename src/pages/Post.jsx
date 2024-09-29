@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import $ from "jquery";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import PostSlider from "../components/PostSlider";
 
 export default function Post() {
     // post日期狀態
@@ -54,23 +54,6 @@ export default function Post() {
         }
     };
     
-    // 照(影)片carousel設定
-    const settings = {
-        // 底下的paging
-        dots: true,
-        // 最後一張再滑是否回到第一張
-        infinite: false,
-        // 滑動時間(毫秒)
-        speed: 500,
-        // 一次要顯示幾張
-        slidesToShow: 1,
-        // 一次滑動要顯示幾張
-        slidesToScroll: 1,
-        // 自動輪播
-        autoplay: false,
-        // 當前顯示圖片索引變化時觸發
-        beforeChange: (oldIndex, newIndex) => {setCurrentSlide(newIndex)}
-    };
     // 上傳按鈕觸發
     const handleFileClick = ()=>{
         $('#fileInput').click();
@@ -137,30 +120,7 @@ export default function Post() {
                         </div>
                     </div>
                     {mediaFiles.length > 0 && (
-                        <Slider {...settings}>
-                            {mediaFiles.map((file, index) => (
-                                <div key={index} className="h-96">
-                                    {file.type === 'image' ? (
-                                        <img src={file.url} alt={`media-${index}`} className="max-w-full h-full object-cover mx-auto" />
-                                    ):(
-                                        <video
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="max-w-full h-full object-cover mx-auto"
-                                            onClick={(e) => {
-                                                // 切換靜音狀態
-                                                e.target.muted = !e.target.muted;
-                                            }}
-                                        >
-                                            <source src={file.url} type="video/mp4" />
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    )}
-                                </div>
-                            ))}
-                        </Slider>
+                        <PostSlider mediaFiles={mediaFiles} setCurrentSlide={setCurrentSlide} />
                     )}
                 </div>
                 {/* Post Content */}
