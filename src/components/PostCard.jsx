@@ -6,11 +6,11 @@ import { useAuth } from '../context/AuthContext';
 export default function PostCard({posts, setPosts}) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const {user} = useAuth();
-    const [newReply, setNewReply] = useState('');
+    const [newReply, setNewReply] = useState({});
     const handleAddNewReply = async (post)=>{
         const commentData = {
             userId: user.id,
-            content: newReply
+            content: newReply[post._id]
         };
         try {
             const response = await axios.post(`http://localhost:3001/api/posts/${post._id}/comments`,commentData);
@@ -21,14 +21,14 @@ export default function PostCard({posts, setPosts}) {
                     if(p._id===post._id){
                         return{
                             ...p,
-                            comments:[{_id:`temp_ReplyId ${new Date()}` ,username: user.username, content: newReply, createAt: new Date()}, ...p.comments]
+                            comments:[{_id:`temp_ReplyId ${new Date()}` ,username: user.username, content: newReply[post._id], createAt: new Date()}, ...p.comments]
                         }
                     }
                     return p;
                 })
                 setPosts(updatedPosts); // 更新狀態
             }
-            setNewReply('');
+            setNewReply({...newReply, [post._id]: ''});
         } catch (error) {
             console.error('Error adding comment:', error);
         }
@@ -107,7 +107,7 @@ export default function PostCard({posts, setPosts}) {
                             handleAddNewReply(post);}} className='flex align-bottom flex-wrap mt-5'>
                             <label className='self-end'>{user.username}&emsp;</label>
                             <div className='sm:w-2/5 w-full flex flex-col justify-end relative'>
-                                <textarea value={newReply} onChange={(e)=>{setNewReply(e.target.value)}} placeholder='寫點什麼吧...' className='border-b-1 w-full resize-none pr-8' rows='1' required></textarea>
+                                <textarea value={newReply[post._id]||''} onChange={(e)=>{setNewReply({...newReply, [post._id]: e.target.value})}} placeholder='寫點什麼吧...' className='border-b-1 w-full resize-none pr-8' rows='1' required></textarea>
                                 {newReply && (
                                     <button type="button" onClick={()=>setNewReply('')} className="text-stone-400 text-sm rounded p-1 mx-1 absolute right-1"><i className="bi bi-x-circle-fill"></i></button>
                                 )}
