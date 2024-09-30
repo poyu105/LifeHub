@@ -18,7 +18,7 @@ export default function PostSlider({mediaFiles, setCurrentSlide}){
         beforeChange: (oldIndex, newIndex) => {setCurrentSlide(newIndex)}
     };
     return(
-        <Slider {...settings}>
+        <Slider className="h-96" {...settings}>
             {mediaFiles.map((file, index) => (
                 <div key={index} className="h-96">
                     {file.type === 'image' ? (

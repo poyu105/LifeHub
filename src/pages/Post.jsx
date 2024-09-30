@@ -109,7 +109,7 @@ export default function Post() {
                     </div>
                 </div>
                 {/* Post Img */}
-                <div className="flex flex-col bg-slate-200 my-3 border-1 border-red-600 rounded p-1">
+                <div className="flex flex-col bg-gray-200 my-3 border-1 border-red-600 rounded pt-1 px-1">
                     <div className="flex flex-row justify-between items-center mb-1">
                         <label className="font-bold sm:text-lg">選取照片</label>
                         <div className="flex flex-row gap-2">
@@ -123,7 +123,7 @@ export default function Post() {
                     )}
                 </div>
                 {/* Post Content */}
-                <div className="md:text-lg my-2 border-1 border-red-600 rounded p-1">
+                <div className="md:text-lg my-6 border-1 border-red-600 rounded p-1">
                     <label className="font-bold text-sm">請輸入貼文內容:</label>
                     <textarea value={content} onChange={(e) => { setContent(e.target.value) }} placeholder="貼文內容" className="w-full border rounded-lg" required></textarea>
                 </div>
