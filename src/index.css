@@ -15,4 +15,8 @@
     input[type=number] {
       @apply appearance-none;
     }
+     /* 隱藏滾動條 */
+    textarea::-webkit-scrollbar {
+      display: none;
+    }
   }
