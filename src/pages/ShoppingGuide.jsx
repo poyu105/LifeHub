@@ -17,7 +17,7 @@ export default function ShoppingGuide(){
     },[]);
     return(
         <>
-            <PostCard posts={posts} />
+            <PostCard posts={posts} setPosts={setPosts}/>
         </>
     )
 }

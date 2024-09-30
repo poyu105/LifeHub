@@ -16,7 +16,7 @@ export default function Home(){
     },[])
     return(
         <>
-            <PostCard posts={posts}/>
+            <PostCard posts={posts} setPosts={setPosts}/>
         </>
     )
 }
