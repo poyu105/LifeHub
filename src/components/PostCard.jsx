@@ -68,14 +68,14 @@ export default function PostCard({posts, setPosts}) {
                             </span>
                         </div>
                         {/* Post Img */}
-                        <div className="bg-slate-500 my-3 rounded">
+                        <div className="bg-gray-200 my-3 rounded">
                             {post.mediaFiles.length > 0 && (
                                 <PostSlider mediaFiles={post.mediaFiles} setCurrentSlide={setCurrentSlide}/>
                             )}
                         </div>
                         {/* Post Content */}
-                        <div className="md:text-lg my-2">
-                            <p>{post.content}</p>
+                        <div className="md:text-lg my-6 border-b-1">
+                            <p className='whitespace-pre-wrap'>{post.content}</p>
                         </div>
                         {/* Post Reply */}
                         <div className="flex flex-col">
