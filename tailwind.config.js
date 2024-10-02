@@ -14,6 +14,9 @@ export default {
       },
       borderWidth:{
         '1':'1px'
+      },
+      fontSize:{
+        'xxs':'0.5rem'
       }
     },
   },
