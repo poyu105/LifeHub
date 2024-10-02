@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PostSlider from './PostSlider';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
+import Comments from './Comments';
 
 export default function PostCard({posts, setPosts}) {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -33,19 +35,19 @@ export default function PostCard({posts, setPosts}) {
             console.error('Error adding comment:', error);
         }
     };
-    //查看更多留言
-    const handleLoadMoreComments = (post) => {
-        const updatedPosts = posts.map((p) => {
-            if (p._id === post._id) {
-                return {
-                    ...p,
-                    visibleCommentsCount: (p.visibleCommentsCount || 3) + 3
-                };
-            }
-            return p;
-        });
-        setPosts(updatedPosts); // 更新狀態
-    };
+        //查看更多留言
+        const handleLoadMoreComments = (post) => {
+            const updatedPosts = posts.map((p) => {
+                if (p._id === post._id) {
+                    return {
+                        ...p,
+                        visibleCommentsCount: (p.visibleCommentsCount || 3) + 3
+                    };
+                }
+                return p;
+            });
+            setPosts(updatedPosts); // 更新狀態
+        };
     return (
         <>
             {posts.map((post) => {
@@ -74,46 +76,33 @@ export default function PostCard({posts, setPosts}) {
                             )}
                         </div>
                         {/* Post Content */}
-                        <div className="md:text-lg my-6 border-b-1">
+                        <div className="md:text-lg text-sm my-6 border-b-1">
                             <p className='whitespace-pre-wrap'>{post.content}</p>
                         </div>
                         {/* Post Reply */}
                         <div className="flex flex-col">
-                            {post.comments.length >0 ? (
-                                post.comments.slice(0, visibleCommentsCount).map((reply) => {
-                                    const createdAtDate = new Date(reply.createAt);
-                                    const month = String(createdAtDate.getMonth() + 1).padStart(2, '0');
-                                    const day = String(createdAtDate.getDate()).padStart(2, '0');
-                                    const formattedDate = `${month}月${day}日`; 
-
-                                    return (
-                                        <div key={reply._id} className="flex sm:items-center sm:flex-row sm:justify-between flex-col  border-b-1 border-gray-300">
-                                            <div className='flex sm:items-center sm:gap-3 sm:flex-row flex-col'>
-                                                <h1 className='text-lg'>{reply.username}</h1>
-                                                <p className='text-sm'>{reply.content}</p>
-                                            </div>
-                                            <span className='text-xs'>{formattedDate}</span>
-                                        </div>
-                                )})
-                            ) : (
-                                <p className="text-gray-500">目前還沒有回覆哦!</p>
-                            )}
+                            {post.comments.length > 0 ? post.comments.slice(0, visibleCommentsCount).map((reply)=><Comments key={reply._id} reply={reply} />):<p className="text-gray-500">目前還沒有回覆哦!</p>}
                             {post.comments.length > visibleCommentsCount && (
                                 <button onClick={() => handleLoadMoreComments(post)} className="mt-2 text-blue-500">更多評論</button>
                             )}
                         </div>
-                        <form onSubmit={(e)=>{
-                            e.preventDefault();
-                            handleAddNewReply(post);}} className='flex align-bottom flex-wrap mt-5'>
-                            <label className='self-end'>{user.username}&emsp;</label>
-                            <div className='sm:w-2/5 w-full flex flex-col justify-end relative'>
-                                <textarea value={newReply[post._id]||''} onChange={(e)=>{setNewReply({...newReply, [post._id]: e.target.value})}} placeholder='寫點什麼吧...' className='border-b-1 w-full resize-none pr-8' rows='1' required></textarea>
-                                {newReply && (
-                                    <button type="button" onClick={()=>setNewReply('')} className="text-stone-400 text-sm rounded p-1 mx-1 absolute right-1"><i className="bi bi-x-circle-fill"></i></button>
-                                )}
+                        {user ? 
+                            (<form onSubmit={(e)=>{
+                                e.preventDefault();
+                                handleAddNewReply(post);}} className='flex align-bottom flex-wrap mt-5'>
+                                <label className='self-end'>{user.username}&emsp;</label>
+                                <div className='sm:w-2/5 w-full flex flex-col justify-end relative'>
+                                    <textarea value={newReply[post._id]||''} onChange={(e)=>{setNewReply({...newReply, [post._id]: e.target.value})}} placeholder='寫點什麼吧...' className='border-b-1 w-full resize-none pr-8' rows='1' required></textarea>
+                                    {newReply && (
+                                        <button type="button" onClick={()=>setNewReply('')} className="text-stone-400 hover:text-stone-300 text-sm rounded p-1 mx-1 absolute right-1"><i className="bi bi-x-circle-fill"></i></button>
+                                    )}
+                                </div>
+                                <button type='submit' className='bg-slate-500 hover:bg-slate-400 text-white rounded text-sm p-1'><i className="bi bi-send"></i>新增留言</button>
+                            </form>) :
+                            <div className='bg-amber-200 border-2 rounded mt-5 p-1 md:text-lg text-sm'>
+                                <Link to="/login" className=" text-blue-500 border-b-1 border-blue-500 hover:text-blue-700 hover:border-blue-700">登入</Link>以留言
                             </div>
-                            <button type='submit' className='bg-blue-500 text-white rounded text-sm p-1'><i className="bi bi-send"></i>新增留言</button>
-                        </form>
+                        }
                         {/* Post Footer */}
                         <div className="flex justify-between sm:flex-row flex-col md:text-base sm:text-sm text-xs my-2">
                             <span>{post.postDate}</span>
