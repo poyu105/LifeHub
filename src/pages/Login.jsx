@@ -23,7 +23,7 @@ export default function Login(){
                 password
             });
             login(response.data.user);
-            navigate('/Profile');
+            navigate('/profile');
         } catch(error){
             alert('登入失敗，請重試!');
         }
