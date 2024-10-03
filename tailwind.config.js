@@ -12,11 +12,11 @@ export default {
       screens:{
         'customer-ssm':'300px'
       },
-      borderWidth:{
-        '1':'1px'
-      },
       fontSize:{
         'xxs':'0.5rem'
+      },
+      borderWidth:{
+        '3':'3px'
       }
     },
   },
