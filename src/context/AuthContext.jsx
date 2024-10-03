@@ -29,6 +29,7 @@ export function AuthProvider({ children }) {
         } catch (error) {
             console.log(`資料更新失敗:${error}`);
             alert(`資料更新失敗:${error}`);
+            throw(error);
         }
     }
 

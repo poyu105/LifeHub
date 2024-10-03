@@ -45,14 +45,19 @@ export default function Profile() {
             e.stopPropagation();
             return;
         }
-        setIsEditable(false);
         const upDateUserData = {
             username,
             email,
             phoneNumber,
             birthDate
         };
-        updateUser(upDateUserData);
+        try {
+            await updateUser(upDateUserData);
+            setIsEditable(false);
+        } catch (error) {
+            setIsEditable(false);
+            handleCancel(e);
+        }
     }
 
     return (
