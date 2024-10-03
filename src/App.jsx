@@ -38,23 +38,23 @@ function NavbarWrapper() {
 
 function App() {
   return (
-    <AuthProvider>
       <Router>
-        <NavbarWrapper />
-        <Routes>
-          <Route path="/LifeHub" element={<Navigate to='/' replace />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/foodRec" element={<FoodRec />} />
-          <Route path="/trafficGuide" element={<TrafficGuide />} />
-          <Route path="/shoppingGuide" element={<ShoppingGuide />} />
-          <Route path="/entertainment" element={<Entertainment />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/post" element={<Post />} />
-        </Routes>
+        <AuthProvider>
+          <NavbarWrapper />
+          <Routes>
+            <Route path="/LifeHub" element={<Navigate to='/' replace />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/foodRec" element={<FoodRec />} />
+            <Route path="/trafficGuide" element={<TrafficGuide />} />
+            <Route path="/shoppingGuide" element={<ShoppingGuide />} />
+            <Route path="/entertainment" element={<Entertainment />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/post" element={<Post />} />
+          </Routes>
+        </AuthProvider>
       </Router>
-    </AuthProvider>
   );
 }
 
