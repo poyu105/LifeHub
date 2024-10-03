@@ -92,7 +92,7 @@ export default function PostCard({posts, setPosts}) {
                                 handleAddNewReply(post);}} className='flex align-bottom flex-wrap mt-5'>
                                 <label className='self-end'>{user.username}&emsp;</label>
                                 <div className='sm:w-2/5 w-full flex flex-col justify-end relative'>
-                                    <textarea value={newReply[post._id]||''} onChange={(e)=>{setNewReply({...newReply, [post._id]: e.target.value})}} placeholder='寫點什麼吧...' className='border-b-1 w-full resize-none pr-8' rows='1' required></textarea>
+                                    <textarea value={newReply[post._id]||''} onChange={(e)=>{setNewReply({...newReply, [post._id]: e.target.value})}} placeholder='寫點什麼吧...' className='border-b w-full resize-none pr-8' rows='1' required></textarea>
                                     {newReply && (
                                         <button type="button" onClick={()=>setNewReply('')} className="text-stone-400 hover:text-stone-300 text-sm rounded p-1 mx-1 absolute right-1"><i className="bi bi-x-circle-fill"></i></button>
                                     )}
