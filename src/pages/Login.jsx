@@ -22,11 +22,9 @@ export default function Login(){
                 email,
                 password
             });
-            console.log('F:登入成功:', response.data);
             login(response.data.user);
             navigate('/Profile');
         } catch(error){
-            console.log('F:登入失敗', error);
             alert('登入失敗，請重試!');
         }
     };
