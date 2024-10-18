@@ -89,18 +89,29 @@ export default function Profile() {
                         <header className="flex flex-row justify-between items-center">
                             <h1 className="text-center text-2xl">歡迎 {user.username}</h1>
                             <div>
-                                <button onClick={()=>{console.log(`目前的用戶資訊: ${JSON.stringify(user)}`); alert(`id: ${user.id} \n使用者名稱: ${user.username} \nEmail: ${user.email}`)}} className="bg-yellow-300 hover:bg-yellow-400 text-black p-1 m-1 rounded">顯示目前用戶資訊</button>
+                                <button onClick={()=>{alert('噢噢! 此功能似乎還在開發階段無法使用!')}} className="bg-yellow-300 hover:bg-yellow-400 text-black p-1 m-1 rounded">編輯個人資料</button>
                                 <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white p-1 m-1 rounded">登出</button>
                             </div>
                         </header>
                         <hr/>
                         {/* body */}
-                        <body className="flex justify-center flex-col items-center mb-4">
-                            <div className="flex justify-evenly items-center my-2 w-full">
+                        <div className="flex justify-center flex-col items-center mb-4">
+                            <div className="flex items-center my-2 w-9/12">
                                 <div className="rounded-full w-fit">
-                                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="" className="border-3 border-slate-300 rounded-full w-40"/>
+                                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="" className="border-3 border-slate-300 rounded-full sm:w-40 w-24"/>
                                 </div>
-                                <div className="flex justify-between items-center w-3/6">
+                                <div className="flex justify-evenly w-3/4">
+                                    <div className="text-center">
+                                        <p className="sm:text-2xl text-lg font-bold">{posts.state==='ERROR'? 'ERROR':posts.length}</p>
+                                        <p className="sm:text-xl">則貼文</p>
+                                    </div>
+                                    <div className="text-center">
+                                        <p className="sm:text-2xl text-lg font-bold">999</p>
+                                        <p className="sm:text-xl">被讚</p>
+                                    </div>
+                                </div>
+                                {/* 以下預計開發編輯個人資料modal */}
+                                {/* <div className="w-3/6">
                                     <form onSubmit={handleSubmit} className="w-1/2">
                                         <div className="flex flex-col">
                                             <label>使用者名稱</label>
@@ -129,12 +140,23 @@ export default function Profile() {
                                             </>
                                         )}
                                     </form>
-                                    <div className="w-1/2 text-center">
-                                        <h1 className="text-3xl font-bold">貼文數</h1>
-                                        <p className="text-2xl">{posts.state==='ERROR'? 'ERROR':posts.length}</p>
-                                    </div>
+                                </div> */}
+                            </div>
+                            {/* 以下為個人簡介 */}
+                            <div className="w-9/12 mb-1">
+                                <p>{user.username}</p>
+                                <p>我是{user.username}的簡介，目前正在進行開發。</p>
+                                <p>請見github查看代碼:</p>
+                                <p>
+                                    前端代碼:<a href="https://github.com/poyu105/LifeHub" className="text-blue-500" target="_blank">https://github.com/poyu105/LifeHub</a><br/>
+                                    後端代碼<span className="text-xs">(請安裝相關程式以順利運行後端!)</span>:<a href="https://github.com/poyu105/LifeHub-Backend" className="text-blue-500" target="_blank">https://github.com/poyu105/LifeHub-Backend</a>
+                                </p>
+                                <div className="mt-3 flex justify-center gap-2">
+                                    <button onClick={()=>{alert('噢噢! 此功能似乎還在開發階段無法使用!')}} className="w-5/12 p-1 bg-neutral-600 hover:bg-neutral-500 rounded text-white sm:text-base text-sm">編輯個人檔案</button>
+                                    <button onClick={()=>{alert('噢噢! 此功能似乎還在開發階段無法使用!')}} className="w-5/12 p-1 bg-neutral-600 hover:bg-neutral-500 rounded text-white sm:text-base text-sm">分享個人檔案</button>
                                 </div>
                             </div>
+                            {/* 貼文分隔線 */}
                             <div className="bg-slate-200 w-4/5 h-0.5 rounded"></div>
                             {posts.state === 'ERROR' ? (
                                 <div>
@@ -165,7 +187,7 @@ export default function Profile() {
                                 )
                             )
                             }
-                        </body>
+                        </div>
                     </div>
                 </>
                 :
