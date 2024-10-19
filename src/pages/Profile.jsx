@@ -69,9 +69,22 @@ export default function Profile() {
                 setPosts(response.data);
             }
         } catch (error) {
-            setPosts({state: 'ERROR', message: error.message});
-            console.log(`載入用戶貼文失敗! ${error}`);
-            alert('載入用戶貼文失敗!');
+            if (error.response) {
+                // 伺服器有回應，但發生錯誤
+                console.log(`伺服器回應錯誤! 狀態碼: ${error.response.status}`);
+                setPosts({ state: 'ERROR', message: `伺服器錯誤: ${error.response.status}` });
+                alert(`伺服器回應錯誤: ${error.response.status}`);
+            } else if (error.request) {
+                // 請求發送出去了，但沒有收到回應
+                console.log('伺服器無回應或無法連線!');
+                setPosts({ state: 'ERROR', message: '伺服器無回應或無法連線!' });
+                alert('伺服器無回應或無法連線!');
+            } else {
+                // 其他錯誤
+                console.log(`載入用戶貼文失敗! ${error.message}`);
+                setPosts({ state: 'ERROR', message: error.message });
+                alert(`載入用戶貼文失敗! ${error.message}`);
+            }
         }
     }
     useEffect(()=>{

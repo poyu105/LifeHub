@@ -25,7 +25,19 @@ export default function Login(){
             login(response.data.user);
             navigate('/profile');
         } catch(error){
-            alert('登入失敗，請重試!');
+            if(error.response){
+                // 伺服器有回應，但發生錯誤
+                console.log(`伺服器回應錯誤! 狀態碼: ${error.response.status}`);
+                alert(`伺服器回應錯誤: ${error.response.status}`)
+            }else if(error.request){
+                // 請求發送出去了，但沒有收到回應
+                console.log('伺服器無回應或無法連線!');
+                alert('伺服器無回應或無法連線!');
+            }else{
+                // 其他錯誤
+                console.log(`登入失敗! ${error.message}`);
+                alert(`登入失敗! ${error.message}`);
+            }
         }
     };
 
