@@ -109,7 +109,7 @@ export default function Profile() {
                         <hr/>
                         {/* body */}
                         <div className="flex justify-center flex-col items-center mb-4">
-                            <div className="flex items-center my-2 w-9/12">
+                            <div className="flex items-center my-2 w-full">
                                 <div className="rounded-full w-fit">
                                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="" className="border-3 border-slate-300 rounded-full sm:w-40 w-24"/>
                                 </div>
@@ -156,7 +156,7 @@ export default function Profile() {
                                 </div> */}
                             </div>
                             {/* 以下為個人簡介 */}
-                            <div className="w-9/12 mb-1">
+                            <div className="w-full mb-1">
                                 <p>{user.username}</p>
                                 <p>我是{user.username}的簡介，目前正在進行開發。</p>
                                 <p>請見github查看代碼:</p>
